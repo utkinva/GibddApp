@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using GibddApp.Utilities;
 using GibddApp.UI.Pages;
 using GibddApp.Entities;
+using Microsoft.Win32;
+using System.IO;
 
 namespace GibddApp.UI.Pages
 {
@@ -23,11 +25,15 @@ namespace GibddApp.UI.Pages
     /// </summary>
     public partial class DriversListViewPage : Page
     {
+        #region Конструктор страницы DriversListViewPage
         public DriversListViewPage()
         {
             InitializeComponent();
             driversListV.ItemsSource = Transition.Context.Drivers.ToList();
         }
+        #endregion
+
+        #region События кнопок добавления, редактирования и удаления
         private void editBtn_Click(object sender, RoutedEventArgs e)
         {
             Transition.mainFrame.Navigate(new AddEditPage(driversListV.SelectedItem as Drivers));
@@ -62,11 +68,45 @@ namespace GibddApp.UI.Pages
             Transition.mainFrame.Navigate(new AddEditPage(null));
             driversListV.ItemsSource = Transition.Context.Drivers.ToList();
         }
+        #endregion
 
+        #region Отображение кнопок удаления и редактирования
         private void driversListV_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             editBtn.Visibility = Visibility.Visible;
             deleteBtn.Visibility = Visibility.Visible;
         }
+        #endregion
+
+        #region Экспорт в .csv
+        private void csvExportBtn_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "CSV Files(*.csv)|*.csv";
+
+            string filePath = null;
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                filePath = saveFileDialog.FileName;
+            }
+
+            if (filePath == null)
+                return;
+
+            using (StreamWriter writer = new StreamWriter(new FileStream(filePath, FileMode.Create, FileAccess.Write), Encoding.UTF8))
+            {
+                writer.WriteLine("Номер водителя;Фамилия;Имя;Отчество;Серия паспорта;Номер паспорта;Город;Адрес;Компания;Должность;Телефон;Почта;Фото;Комментарий");
+                foreach (Drivers dataFile in Transition.Context.Drivers.ToList())
+                {
+                    writer.WriteLine($"{dataFile.Id};{dataFile.Surname};{dataFile.Name};{dataFile.Middlename};{dataFile.Passport.Substring(0, 4)};{dataFile.Passport.Substring(5, 6)};" +
+                        $"{dataFile.City};{dataFile.Address};{dataFile.Company};{dataFile.Jobname};{dataFile.Phone};{dataFile.Email};{dataFile.Photo};{dataFile.Description}");
+                }
+            }
+
+            MessageBox.Show($"Файл экспортирован: {filePath}", "Экспорт в CSV", MessageBoxButton.OK, MessageBoxImage.Information);
+
+        }
+        #endregion
     }
 }

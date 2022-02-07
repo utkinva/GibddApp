@@ -60,9 +60,12 @@
         <Grid Grid.Row="1">
             <StackPanel Orientation="Horizontal">
                 <Button Style="{StaticResource MainBtn}" HorizontalAlignment="Left" Margin="20 0 20 0"
+                        Content="Экспорт в CSV" x:Name="csvExportBtn" Click="csvExportBtn_Click"/>
+                <Button Style="{StaticResource MainBtn}" HorizontalAlignment="Left" Margin="0 0 20 0"
                         Content="Добавить" x:Name="addBtn" Click="addBtn_Click"/>
-                <Button Style="{StaticResource MainBtn}" HorizontalAlignment="Left" Margin="00 0 0 0"
+                <Button Style="{StaticResource MainBtn}" HorizontalAlignment="Left" Margin="0 0 20 0"
                         Content="Изменить" x:Name="editBtn" Click="editBtn_Click" Visibility="Hidden"/>
+
             </StackPanel>
             <Button Style="{StaticResource MainBtn}" HorizontalAlignment="Right" Margin="0 0 20 0"
                     Content="Удалить" x:Name="deleteBtn" Click="deleteBtn_Click" Visibility="Hidden"/>

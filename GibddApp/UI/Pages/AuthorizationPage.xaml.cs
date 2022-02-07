@@ -22,13 +22,16 @@ namespace GibddApp.UI.Pages
     /// </summary>
     public partial class AuthorizationPage : Page
     {
+        #region Конструктор страницы AuthorizationPage
         List<Users> usersList = Transition.Context.Users.ToList();
         public AuthorizationPage()
         {
             InitializeComponent();
-            
-        }
 
+        }
+        #endregion
+
+        #region Событие кнопки войти
         private void loginBtn_Click(object sender, RoutedEventArgs e)
         {
             foreach (var item in usersList)
@@ -43,5 +46,6 @@ namespace GibddApp.UI.Pages
                 }
             }
         }
+        #endregion
     }
 }

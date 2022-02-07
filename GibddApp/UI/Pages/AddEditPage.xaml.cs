@@ -23,6 +23,7 @@ namespace GibddApp.UI.Pages
     /// </summary>
     public partial class AddEditPage : Page
     {
+        #region Конструктор страницы AddEditPage
         Drivers currentDriver;
         public AddEditPage(Drivers driver)
         {
@@ -30,6 +31,10 @@ namespace GibddApp.UI.Pages
             currentDriver = driver ?? new Drivers();
             DataContext = currentDriver;
         }
+        #endregion
+
+        #region События кнопок сохранить и отмена
+
 
         private void cancelBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -88,5 +93,6 @@ namespace GibddApp.UI.Pages
                 MessageBox.Show(ex.Message);
             }
         }
+        #endregion
     }
 }

@@ -22,6 +22,7 @@ namespace GibddApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region Конструктор окна MainWindow
         public MainWindow()
         {
             InitializeComponent();
@@ -29,5 +30,6 @@ namespace GibddApp
             Transition.mainFrame.Navigate(new AuthorizationPage());
             
         }
+        #endregion
     }
 }
