@@ -1,0 +1,66 @@
+﻿<Page x:Class="GibddApp.UI.Pages.AddEditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GibddApp.UI.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="AddEditPage">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="600" Height="600">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource txtBlockMain}" Text="Фамилия:"/>
+                <TextBox Style="{StaticResource txtBoxMain}" Text="{Binding Surname}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource txtBlockMain}" Text="Имя:"/>
+                <TextBox Style="{StaticResource txtBoxMain}" Text="{Binding Name}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource txtBlockMain}" Text="Отчество:"/>
+                <TextBox Style="{StaticResource txtBoxMain}" Text="{Binding Middlename}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource txtBlockMain}" Text="Паспорт"/>
+                <TextBox Style="{StaticResource txtBoxMain}" Text="{Binding Passport}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource txtBlockMain}" Text="Город:"/>
+                <TextBox Style="{StaticResource txtBoxMain}" Text="{Binding City}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource txtBlockMain}" Text="Адрес:"/>
+                <TextBox Style="{StaticResource txtBoxMain}" Text="{Binding Address}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource txtBlockMain}" Text="Компания:"/>
+                <TextBox Style="{StaticResource txtBoxMain}" Text="{Binding Company}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource txtBlockMain}" Text="Должность:"/>
+                <TextBox Style="{StaticResource txtBoxMain}" Text="{Binding Jobname}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource txtBlockMain}" Text="Телефон:"/>
+                <TextBox Style="{StaticResource txtBoxMain}" Text="{Binding Phone}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource txtBlockMain}" Text="Почта:"/>
+                <TextBox Style="{StaticResource txtBoxMain}" Text="{Binding Email}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource txtBlockMain}" Text="Фото:"/>
+                <TextBox Style="{StaticResource txtBoxMain}" Text="{Binding Photo}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10 0 0">
+                <Button Style="{StaticResource MainBtn}" Content="Сохранить" Margin="0 0 100 0"
+                        x:Name="saveBtn" Click="saveBtn_Click"/>
+                <Button Style="{StaticResource MainBtn}" Margin="100 0 0 0" Content="Отмена"
+                        x:Name="cancelBtn" Click="cancelBtn_Click"/>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Page>
